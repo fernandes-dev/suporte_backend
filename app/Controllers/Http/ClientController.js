@@ -12,8 +12,9 @@ class ClientController {
 
   async store({ request }) {
     const data = request.only([
-      'identification', 'type', 'document', 'email',
-      'password', 'phone', 'birthday'
+      'name', 'company_name', 'type', 'class', 'document', 'state_registration',
+      'rg', 'municipal_registration', 'email', 'password', 'phone', 'phone_cel',
+      'birthday', 'simple_national', 'obs', 'status'
     ])
 
     const client = await Client.create(data)
@@ -39,8 +40,9 @@ class ClientController {
     }
 
     const data = request.only([
-      'identification', 'type', 'document', 'email',
-      'password', 'phone', 'birthday', 'status'
+      'name', 'company_name', 'type', 'class', 'document', 'state_registration',
+      'rg', 'municipal_registration', 'email', 'password', 'phone', 'phone_cel',
+      'birthday', 'simple_national', 'obs', 'status'
     ])
 
     client.merge(data)
