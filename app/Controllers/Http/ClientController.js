@@ -4,13 +4,13 @@ const Client = use("App/Models/Client")
 
 class ClientController {
 
-  async index({ auth }) {
+  async index() {
     const clients = await Client.all()
 
     return clients
   }
 
-  async store({ request, response }) {
+  async store({ request }) {
     const data = request.only([
       'identification', 'type', 'document', 'email',
       'password', 'phone', 'birthday'
@@ -21,7 +21,7 @@ class ClientController {
     return client
   }
 
-  async show({ params, auth }) {
+  async show({ params }) {
     const client = await Client.findOrFail(params.id)
 
     return client

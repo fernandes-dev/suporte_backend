@@ -7,13 +7,18 @@ class ClientSchema extends Schema {
   up() {
     this.create('clients', (table) => {
       table.increments()
-      table.string('identification').notNullable()
+      table.string('name').notNullable()
+      table.string('company_name') // razão social
       table.enu('type', ['Jurídica', 'Física']).notNullable()
-      table.string('document').notNullable().unique()
+      table.string('document').notNullable().unique() // cpf ou cnpj
+      table.string('document_secondary') // incrição estadual ou RG
+      table.string('municipal_registration') // incrição municipal
       table.string('email').notNullable().unique()
       table.string('password').notNullable()
-      table.string('phone')
-      table.string('birthday')
+      table.string('phone') // telefone empresarial
+      table.string('phone_cel') // telefone pessoal / celular
+      table.string('birthday') // data de aniversário ou fundação da empresa
+      table.string('obs') // observações
       table.enu('status', ['Ativo', 'Inativo']).defaultTo('Ativo')
       table.timestamps()
     })
